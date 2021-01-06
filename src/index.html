@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Qr Code generator</title>
 </head>
 <body>
-    
+    <header><h1>Welcome to Qr Code Badget Generator</h1></header>
+    <form action="">
+        
+        <section class="input-container">
+            <label for="name">Name:</label>
+        <input required type="text" name="name" id="name">
+
+        <label for="email">Email:</label>
+        <input required type="text" name="email" id="email">
+
+        <label for="twitter">Twitter:</label>
+        <input type="text" name="twitter" id="twitter">
+
+        <label for="github">Github:</label>
+        <input type="text" name="github" id="github">
+        </section>
+
+        <section class="button-container">
+            <button class="create-button" type="submit"> Create </button>
+            <button class="cancel-button" > Cancel </button>
+        </section>
+    </form>
 </body>
 </html>
