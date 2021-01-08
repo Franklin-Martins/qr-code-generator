@@ -8,16 +8,16 @@
     <title>Qr Code generator</title>
 </head>
 <body>
-    <header><h1>Welcome to Qr Code Badget Generator</h1></header>
+    <header><h1>Welcome to Qr Code Badge Generator</h1></header>
 
-    <form onsubmit="">
+    <form name="myForm" method="POST" onsubmit="return createUserBadge()" action="./generatedImage.html">
         
         <section class="input-container">
             <label for="name">Name:</label>
-        <input required type="text" name="name" id="name">
+        <input  type="text" name="name" id="name">
 
         <label for="email">Email:</label>
-        <input required type="text" name="email" id="email">
+        <input  type="text" name="email" id="email">
 
         <label for="twitter">Twitter:</label>
         <input type="text" name="twitter" id="twitter">

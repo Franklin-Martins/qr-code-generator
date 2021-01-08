@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js">  </script>
+    <title>Generated Badge</title>
+</head>
+<body>
+    <header><h1>Generated Badge</h1></header>
+
+    <form>
+        
+        <section class="input-container">
+            <label id="name" for="name">Name: </label>
+
+        <label id="email" for="email"></label>
+        
+
+        <label id="twitter" for="twitter"></label>
+       
+
+        <label id="github" for="github"></label>
+        </section>
+
+        <section class="button-container">
+            <button class="create-button" type="submit"> Create </button>
+            <button onclick="generateUser()" class="cancel-button" > Cancel </button>
+        </section>
+    </form>
+    <script>
+        const name = sessionStorage.getItem("name");
+        const email = sessionStorage.getItem("email")
+        const twitter = sessionStorage.getItem("twitter")
+        const github = sessionStorage.getItem("github")
+        
+        document.getElementById("name").innerHTML = "Name: "+(name);
+        document.getElementById("email").innerHTML = "Email: "+(email);
+        if(twitter == null){
+            document.getElementById("twitter").innerHTML = "Twitter: Não identificado";
+        } else{
+            document.getElementById("twitter").innerHTML = "Twitter: "+ twitter;
+        }
+        if(github == null){
+            document.getElementById("github").innerHTML = "Github: Não identificado";
+        } else{
+            document.getElementById("twitter").innerHTML = "Github: "+(github);
+        }
+    </script>
+</body>
+</html>
