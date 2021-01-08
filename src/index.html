@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
     <title>Qr Code generator</title>
 </head>
 <body>
     <header><h1>Welcome to Qr Code Badget Generator</h1></header>
-    <form action="">
+
+    <form onsubmit="">
         
         <section class="input-container">
             <label for="name">Name:</label>
@@ -26,7 +28,7 @@
 
         <section class="button-container">
             <button class="create-button" type="submit"> Create </button>
-            <button class="cancel-button" > Cancel </button>
+            <button onclick="clearAllFileds()" class="cancel-button" > Cancel </button>
         </section>
     </form>
 </body>
