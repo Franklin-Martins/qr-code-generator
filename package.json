@@ -1,0 +1,29 @@
+{
+  "name": "qr-code-generator",
+  "version": "1.0.0",
+  "description": "This app is an idea from App Ideas.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "qrcode": "^1.4.4"
+  },
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Franklin-Martins/qr-code-generator.git"
+  },
+  "author": "Franklin-Martins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Franklin-Martins/qr-code-generator/issues"
+  },
+  "homepage": "https://github.com/Franklin-Martins/qr-code-generator#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

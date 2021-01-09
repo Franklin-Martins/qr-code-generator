@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js">  </script>
+    <script src="qrcode.min.js"></script>
+    <title>Generated Badge</title>
+</head>
+<body>
+    <header><h1>Generated Badge</h1></header>
+    <form>
+        
+        <section class="input-container">
+
+            <div id="qrcode"></div>
+
+            <label id="name" for="name">{{bd.name}} </label>
+
+            <label id="email" for="email"> {{bd.email}} </label>
+            
+
+            <label id="twitter" for="twitter"> {{bd.twitter}} </label>
+        
+
+            <label id="github" for="github"> {{bd.github}} </label>
+
+            <img src={{bd.qrCode}} alt="">
+            
+        </section>
+
+        <section class="button-container">
+            <button class="create-button" type="submit"> Create </button>
+            <button onclick="generateUser()" class="cancel-button" > Cancel </button>
+        </section>
+    </form>
+</body>
+</html>

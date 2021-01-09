@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js"></script>
-    <title>Qr Code generator</title>
-</head>
-<body>
-    <header><h1>Welcome to Qr Code Badge Generator</h1></header>
 
-    <form name="myForm" method="POST" onsubmit="return createUserBadge()" action="./generatedImage.html">
+    <form name="myForm" method="POST"  action="/generated-user">
         
         <section class="input-container">
             <label for="name">Name:</label>
@@ -31,5 +20,3 @@
             <button onclick="clearAllFileds()" class="cancel-button" > Cancel </button>
         </section>
     </form>
-</body>
-</html>
