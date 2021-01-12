@@ -3,16 +3,19 @@
         
         <section class="input-container">
             <label for="name">Name:</label>
-        <input  type="text" name="name" id="name">
+            <input  type="text" name="name" id="name">
+            <label class="errorMessage"> {{errorMessages.nameError}} </label>
 
-        <label for="email">Email:</label>
-        <input  type="text" name="email" id="email">
+            <label for="email">Email:</label>
+            <input  type="text" name="email" id="email">
+            <label class="errorMessage"> {{errorMessages.emailError}} </label>
 
-        <label for="twitter">Twitter:</label>
-        <input type="text" name="twitter" id="twitter">
+            <label for="twitter">Twitter:</label>
+            <input type="text" name="twitter" id="twitter">
+            <label class="errorMessage"> {{errorMessages.twitterError}} </label>
 
-        <label for="github">Github:</label>
-        <input type="text" name="github" id="github">
+            <label for="github">Github:</label>
+            <input type="text" name="github" id="github">
         </section>
 
         <section class="button-container">

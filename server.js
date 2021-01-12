@@ -10,6 +10,11 @@ const bd = {
     github: "",
     qrCode: ""
 }
+const errorMessages = {
+    nameError: null,
+    emailError: null,
+    twitterError: null
+}
 app.use('/static', express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
@@ -17,7 +22,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 app.get('/', (request, response)=>{
-    return response.render('index')
+    return response.render('index', {errorMessages: errorMessages})
 })
 app.get('/generated-user', (request, response)=>{
     response.render('generatedImage', {bd: bd})
@@ -28,6 +33,23 @@ app.post('/generated-user', (request, response) => {
     bd.twitter = request.body.twitter;
     bd.github = request.body.github;
 
+    errorMessages.nameError = null;
+    errorMessages.emailError = null;
+    errorMessages.twitterError = null;
+
+    if(bd.name == null || bd.name == ""){
+        errorMessages.nameError = "Digite nome válido"
+        return response.redirect('/')
+    }
+    if (bd.email ==  null || bd.email ==  ""){
+        errorMessages.emailError = "Digite email válido"
+        return response.redirect('/')
+    }
+    if (bd.twitter != "" && bd.twitter.substr(0, 1) != "@"){
+        errorMessages.twitterError = "Nome do twitter deve inicar com @"
+        return response.redirect('/')
+    }
+
     const text = 
     `Colaborador: ${bd.name} \n` +
     `Email: ${bd.email} \n`+
@@ -36,7 +58,6 @@ app.post('/generated-user', (request, response) => {
     QRCode.toDataURL(text, (err, url)=>{
         if (err) console.log('error: ' + err)
         bd.qrCode = url;
-        console.log(url)
         response.redirect('/generated-user')
     })
     

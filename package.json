@@ -10,7 +10,7 @@
     "qrcode": "^1.4.4"
   },
   "scripts": {
-    "start": "nodemon src/server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
