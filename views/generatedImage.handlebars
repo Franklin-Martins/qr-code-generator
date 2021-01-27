@@ -13,8 +13,7 @@
     <form>
         
         <section class="input-container">
-
-            <div id="qrcode"></div>
+            {{#if bd}}
 
             <label id="name" for="name">{{bd.name}} </label>
 
@@ -27,7 +26,9 @@
             <label id="github" for="github"> {{bd.github}} </label>
 
             <img src={{bd.qrCode}} alt="">
-            
+            {{else}}
+            <div class="Error">Ocorreu algum erro</div>
+            {{/if}}
         </section>
 
         <section class="button-container">
