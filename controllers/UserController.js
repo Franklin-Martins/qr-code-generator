@@ -1,4 +1,5 @@
 const QRCode = require('qrcode');
+const AppError = require('../Error/AppError')
 const bd = {
     name: "",
     email: "",
@@ -7,17 +8,12 @@ const bd = {
     qrCode: ""
 }
 
-const errorMessages = {
-    nameError: null,
-    emailError: null,
-    twitterError: null
-}
-
+const appError = new AppError()
 
 class User{
-    constructor(){}
     async index(request, response) {
-        return response.render('index', {errorMessages: errorMessages})
+        console.log(appError.errorMessages)
+        return response.render('index', {errorMessages: appError.errorMessages})
     }
     async create(request, response){
         bd.name = request.body.name;
@@ -25,20 +21,22 @@ class User{
         bd.twitter = request.body.twitter;
         bd.github = request.body.github;
 
-        errorMessages.nameError = null;
-        errorMessages.emailError = null;
-        errorMessages.twitterError = null;
-
         if(bd.name == null || bd.name == ""|| bd.name == undefined){
-            errorMessages.nameError = "Digite nome válido"
+            
+            appError.setError("Campo inválido")
+            
             return response.redirect('/')
         }
         if (bd.email ==  null || bd.email ==  ""){
-            errorMessages.emailError = "Digite email válido"
+            
+            appError.setError("Campo inválido")
+            
             return response.redirect('/')
         }
         if (bd.twitter != "" && bd.twitter.substr(0, 1) != "@"){
-            errorMessages.twitterError = "Nome do twitter deve inicar com @"
+            
+            appError.setError("Nome do twitter deve inicar com @")
+
             return response.redirect('/')
         }
 
