@@ -3,6 +3,8 @@ const app = express();
 const routes = require('./routes')
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
+const flash = require('connect-flash')
+
 
 app.use('/static', express.static(__dirname + '/public'));
 app.engine('handlebars', handlebars({defaultLayout: 'main'}))

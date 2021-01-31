@@ -12,8 +12,8 @@ const appError = new AppError()
 
 class User{
     async index(request, response) {
-        console.log(appError.errorMessages)
-        return response.render('index', {errorMessages: appError.errorMessages})
+        console.log(appError.errorMessage)
+        return response.render('index', {message: appError.errorMessage})
     }
     async create(request, response){
         bd.name = request.body.name;
@@ -23,13 +23,13 @@ class User{
 
         if(bd.name == null || bd.name == ""|| bd.name == undefined){
             
-            appError.setError("Campo inválido")
+            appError.setError("Nome inválido")
             
             return response.redirect('/')
         }
         if (bd.email ==  null || bd.email ==  ""){
             
-            appError.setError("Campo inválido")
+            appError.setError("Email inválido")
             
             return response.redirect('/')
         }

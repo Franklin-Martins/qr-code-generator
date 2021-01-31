@@ -1,12 +1,12 @@
 class AppError{
     constructor(){
-        this.errorMessages;
+        this.errorMessage
     }
     getError(){
-        return this.errorMessages;
+        return this.errorMessage;
     }
-    setError(errorMessages){
-        this.errorMessages = errorMessages;
+    setError(errorMessage){
+        this.errorMessage = errorMessage;
     }
 }
 
