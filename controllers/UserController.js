@@ -1,12 +1,6 @@
 const QRCode = require('qrcode');
 const AppError = require('../Error/AppError')
-const bd = {
-    name: "",
-    email: "",
-    twitter: "",
-    github: "",
-    qrCode: ""
-}
+
 
 const appError = new AppError()
 
