@@ -4,8 +4,10 @@ const UserModel = require('../models/UserModel')
 const appError = new AppError()
 const userModel = new UserModel()
 class User{
+    constructor(){
+        this.qrCode = "";
+    }
     async index(request, response) {
-        console.log(appError.errorMessage)
         return response.render('index', {message: appError.errorMessage})
     }
     async create(request, response){
@@ -36,23 +38,21 @@ class User{
         `Twitter: ${twitter}\n`+
         `github: ${github}`;
 
-        const qrCode = await QRCode.toDataURL(text, (err, url)=>{
+        QRCode.toDataURL(text, (err, url)=>{
             if (err) console.log('error: ' + err)
-            return url;
+            const qrCode = url;
+            const data = {
+                name:name, 
+                email:email, 
+                twitter:twitter, 
+                github: github,
+                qrCode: qrCode
+            }   
+            userModel.create(data)
+            return response.redirect('/generated-user')
         })
-        console.log(qrCode)
-        const data = {
-            name:name, 
-            email:email, 
-            twitter:twitter, 
-            github: github,
-            qrCode: qrCode
-        }
-        await userModel.create(data)
-        return response.redirect('/generated-user')
     }
     async show(request, response){
-        console.log(userModel.bd)
         return response.render('generatedImage', {bd: userModel.bd});
     }
 }
