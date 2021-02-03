@@ -1,53 +1,59 @@
 const QRCode = require('qrcode');
 const AppError = require('../Error/AppError')
-
-
+const UserModel = require('../models/UserModel')
 const appError = new AppError()
-
+const userModel = new UserModel()
 class User{
     async index(request, response) {
         console.log(appError.errorMessage)
         return response.render('index', {message: appError.errorMessage})
     }
     async create(request, response){
-        bd.name = request.body.name;
-        bd.email = request.body.email;
-        bd.twitter = request.body.twitter;
-        bd.github = request.body.github;
-
-        if(bd.name == null || bd.name == ""|| bd.name == undefined){
+        const { name, email, twitter, github } = request.body
+        
+        if(name == null || name == ""|| name == undefined){
             
             appError.setError("Nome inválido")
             
             return response.redirect('/')
         }
-        if (bd.email ==  null || bd.email ==  ""){
+        if (email ==  null || email ==  ""){
             
             appError.setError("Email inválido")
             
             return response.redirect('/')
         }
-        if (bd.twitter != "" && bd.twitter.substr(0, 1) != "@"){
+        if (twitter != "" && twitter.substr(0, 1) != "@"){
             
             appError.setError("Nome do twitter deve inicar com @")
 
             return response.redirect('/')
         }
-
-        const text = 
-        `Colaborador: ${bd.name} \n` +
-        `Email: ${bd.email} \n`+
-        `Twitter: ${bd.twitter}\n`+
-        `github: ${bd.github}`;
-        QRCode.toDataURL(text, (err, url)=>{
-            if (err) console.log('error: ' + err)
-            bd.qrCode = url;
-            response.redirect('/generated-user')
-        })
         
+        const text = 
+        `Colaborador: ${name} \n` +
+        `Email: ${email} \n`+
+        `Twitter: ${twitter}\n`+
+        `github: ${github}`;
+
+        const qrCode = await QRCode.toDataURL(text, (err, url)=>{
+            if (err) console.log('error: ' + err)
+            return url;
+        })
+        console.log(qrCode)
+        const data = {
+            name:name, 
+            email:email, 
+            twitter:twitter, 
+            github: github,
+            qrCode: qrCode
+        }
+        await userModel.create(data)
+        return response.redirect('/generated-user')
     }
     async show(request, response){
-        return response.render('generatedImage', {bd: bd})
+        console.log(userModel.bd)
+        return response.render('generatedImage', {bd: userModel.bd});
     }
 }
 
