@@ -1,3 +1,4 @@
+const db = require('../database/database')
 
 class UserModel{
     constructor(){
