@@ -1,8 +1,11 @@
 const QRCode = require('qrcode');
+
 const AppError = require('../Error/AppError')
 const UserModel = require('../models/UserModel')
+
 const appError = new AppError()
 const userModel = new UserModel()
+
 class User{
     constructor(){
         this.qrCode = "";
