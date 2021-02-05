@@ -14,14 +14,14 @@ class UserModel{
     index(){
         return bd;
     }
-    async create(user){
+    create(user){
         this.bd.name = user.name;
         this.bd.email = user.email;
         this.bd.twitter = user.twitter;
         this.bd.github = user.github;
         this.bd.qrCode = user.qrCode;
 
-        await database.store(this.bd)
+        database.store(this.bd)
         
     }
 }

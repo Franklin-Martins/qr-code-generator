@@ -1,12 +1,18 @@
+'use strict';
+
 const fs = require("fs")
+const path = require('path')
 
 class DataBase{
     constructor(){}
 
-    async store(data){
-        console.log("WRITING DATA...")
-        console.log(data)
-        await fs.writeFile('database.txt', data);
+    store(dataToSave){
+        const data = JSON.stringify(dataToSave)
+
+        return fs.writeFile(path.resolve(__dirname, "database.json"), data, (err)=>{
+            if (err) console.log('Error: ' + err)
+            console.log("Data Wrtitten to file")
+        })
     }
 }
 
