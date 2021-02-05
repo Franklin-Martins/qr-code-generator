@@ -1,4 +1,4 @@
-const database = require('../database/database')
+const database = require('../database/index')
 
 class UserModel{
     constructor(){
@@ -7,18 +7,22 @@ class UserModel{
             email: "",
             twitter: "",
             github: "",
-            qrCode: "" 
+            qrCode: ""
         }
     }
+    
     index(){
         return bd;
     }
-    create(user){
+    async create(user){
         this.bd.name = user.name;
         this.bd.email = user.email;
         this.bd.twitter = user.twitter;
         this.bd.github = user.github;
         this.bd.qrCode = user.qrCode;
+
+        await database.store(this.bd)
+        
     }
 }
 
